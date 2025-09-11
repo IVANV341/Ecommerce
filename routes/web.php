@@ -8,9 +8,11 @@ Route::get('/', function () {
 });
 
 Route::prefix('products')->controller(ProductController::class)->group(function () {
-    Route::get('/','index');
-    Route::get('/create', 'create');
-    Route::get('/{id}/{category?}','show');
-
+    Route::get('/', 'index');                    // GET /products - Listado
+    Route::get('/create', 'create');             // GET /products/create - Formulario
+    Route::post('/', 'store');                   // POST /products - Guardar producto
+    Route::get('/{id}/{category?}', 'show');     // GET /products/{id} - Ver detalles
+    Route::get('/{id}/edit', 'edit');            // GET /products/{id}/edit - Formulario editar
+    Route::put('/{id}', 'update');               // PUT /products/{id} - Actualizar
+    Route::delete('/{id}', 'destroy');           // DELETE /products/{id} - Eliminar
 });
-
