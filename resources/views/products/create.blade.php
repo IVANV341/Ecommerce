@@ -1,17 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear Producto</title>
-    <style>
+{{-- resources/views/productos/create.blade.php --}}
+@extends('layouts.app')
+@section('hide-navbar', true)
+@section('hide-footer', true)
+@section('css')
+<style>
+        
         body {
             font-family: Arial, sans-serif;
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
             background-color: #f5f5f5;
+        }
+         /* ========== NAVBAR ========== */
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar-menu a:hover {
+            color: #3498db;
         }
         .container {
             background: white;
@@ -86,13 +124,62 @@
         .navigation a:hover {
             text-decoration: underline;
         }
+         /* ========== FOOTER ========== */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 20px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            color: #bdc3c7;
+            line-height: 1.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+        
     </style>
-</head>
-<body>
+@endsection
+
+@section('content')
     <div class="navigation">
         <a href="/products">← Volver al listado</a>
     </div>
-
     <div class="container">
         <h1>Crear Nuevo Producto</h1>
 
@@ -131,5 +218,5 @@
             </div>
         </form>
     </div>
-</body>
-</html>
+@endsection
+
