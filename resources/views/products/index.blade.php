@@ -9,8 +9,8 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -18,10 +18,13 @@
 
         /* ========== NAVBAR ========== */
         .navbar {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .navbar-container {
@@ -34,32 +37,48 @@
         }
 
         .navbar-brand {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
+            letter-spacing: -1px;
         }
 
         .navbar-menu {
             display: flex;
-            gap: 30px;
+            gap: 35px;
             list-style: none;
         }
 
         .navbar-menu a {
-            color: white;
+            color: #333;
             text-decoration: none;
-            transition: color 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
         }
 
-        .navbar-menu a:hover {
-            color: #3498db;
+        .navbar-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        .navbar-menu a:hover::after {
+            width: 100%;
         }
 
         /* ========== SECCIÓN DE PRODUCTOS ========== */
         .products-section {
             flex: 1;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
         .container {
@@ -68,10 +87,12 @@
         }
 
         h1 {
-            color: #333;
+            color: white;
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 32px;
+            margin-bottom: 40px;
+            font-size: 42px;
+            font-weight: 800;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
         }
 
         .header-actions {
@@ -79,152 +100,185 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
 
         .btn {
-            background-color: #28a745;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 24px;
+            padding: 14px 28px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
         .btn:hover {
-            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
         }
 
         .search-box {
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            width: 300px;
-            font-size: 14px;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            width: 350px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
         }
 
         .stats {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
 
         .stats-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .stats-content strong {
+            color: #764ba2;
+            font-size: 20px;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
             background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            border-radius: 20px;
+            padding: 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
         }
 
         .product-image {
             width: 100%;
-            height: 200px;
-            background-color: #eee;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            height: 250px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #999;
-            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            transition: transform 0.4s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
         }
 
         .product-name {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: 700;
             color: #333;
-            margin-bottom: 8px;
+            margin: 15px 20px 8px;
         }
 
         .product-brand {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 8px;
+            color: #764ba2;
+            font-size: 13px;
+            margin: 0 20px 10px;
             text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .product-description {
-            color: #666;
+            color: #777;
             font-size: 14px;
-            line-height: 1.4;
-            margin-bottom: 15px;
-            max-height: 60px;
+            line-height: 1.6;
+            margin: 0 20px 15px;
+            max-height: 65px;
             overflow: hidden;
         }
 
         .product-price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #28a745;
-            margin-bottom: 15px;
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 20px 20px;
         }
 
         .product-actions {
             display: flex;
             gap: 10px;
+            padding: 0 20px 20px;
         }
 
         .btn-view {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 8px 16px;
+            padding: 12px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 12px;
             font-size: 14px;
+            font-weight: 600;
             flex: 1;
             text-align: center;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
 
         .btn-view:hover {
-            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
         .btn-edit {
-            background-color: #ffc107;
-            color: #212529;
-            padding: 8px 16px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 12px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 12px;
             font-size: 14px;
+            font-weight: 600;
             flex: 1;
             text-align: center;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
 
         .btn-edit:hover {
-            background-color: #e0a800;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
         }
 
         /* ========== FOOTER ========== */
         .footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px 20px;
-            margin-top: auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px 20px 20px;
+            margin-top: 60px;
         }
 
         .footer-container {
@@ -232,18 +286,21 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .footer-section h3 {
-            margin-bottom: 15px;
-            color: #3498db;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
 
         .footer-section p,
         .footer-section ul {
-            color: #bdc3c7;
-            line-height: 1.8;
+            color: #555;
+            line-height: 2;
         }
 
         .footer-section ul {
@@ -251,28 +308,30 @@
         }
 
         .footer-section ul li a {
-            color: #bdc3c7;
+            color: #555;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
 
         .footer-section ul li a:hover {
-            color: #3498db;
+            color: #764ba2;
+            padding-left: 5px;
         }
 
         .footer-bottom {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #34495e;
-            color: #bdc3c7;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 2px solid #e0e0e0;
+            color: #777;
+            font-weight: 500;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .navbar-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
             }
 
             .header-actions {
@@ -286,8 +345,12 @@
 
             .stats-content {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
                 text-align: center;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -309,125 +372,125 @@
         <div class="stats">
             <div class="stats-content">
                 <span><strong id="productCount">8</strong> productos registrados</span>
-                <span>Total valor inventario: <strong>$12,450.00</strong></span>
+                <span>Total valor inventario: <strong>$15,890.00</strong></span>
             </div>
         </div>
 
         <div class="products-grid" id="productsContainer">
-            <!-- Producto ejemplo 1 -->
+            <!-- Producto 1 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&h=300&fit=crop" alt="Samsung Galaxy S24 Ultra" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop" alt="Nike Air Max Plus" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                 </div>
-                <div class="product-brand">Samsung</div>
-                <div class="product-name">Galaxy S24 Ultra</div>
-                <div class="product-description">Smartphone de última generación con cámara de 200MP, pantalla AMOLED de 6.8" y procesador Snapdragon 8 Gen 3.</div>
-                <div class="product-price">$1,299.99</div>
+                <div class="product-brand">Nike</div>
+                <div class="product-name">Air Max Plus</div>
+                <div class="product-description">Zapatillas deportivas con tecnología Air Max visible, diseño retro y máxima comodidad para uso diario.</div>
+                <div class="product-price">$189.99</div>
                 <div class="product-actions">
                     <a href="/products/1" class="btn-view">Ver Detalles</a>
                     <a href="/products/1/edit" class="btn-edit">Editar</a>
                 </div>
             </div>
 
-            <!-- Producto ejemplo 2 -->
+            <!-- Producto 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop" alt="MacBook Pro 16" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" alt="JBL Charge 5" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                 </div>
-                <div class="product-brand">Apple</div>
-                <div class="product-name">MacBook Pro 16"</div>
-                <div class="product-description">Laptop profesional con chip M3 Pro, 18GB RAM, 512GB SSD. Perfecta para desarrollo y diseño.</div>
-                <div class="product-price">$2,499.99</div>
+                <div class="product-brand">JBL</div>
+                <div class="product-name">Charge 5</div>
+                <div class="product-description">Altavoz portátil Bluetooth con resistencia al agua IP67, 20 horas de batería y sonido potente.</div>
+                <div class="product-price">$179.99</div>
                 <div class="product-actions">
                     <a href="/products/2" class="btn-view">Ver Detalles</a>
                     <a href="/products/2/edit" class="btn-edit">Editar</a>
                 </div>
             </div>
 
-            <!-- Producto ejemplo 3 -->
+            <!-- Producto 3 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400&h=300&fit=crop" alt="Sony WH-1000XM5" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=300&fit=crop" alt="Canon EOS R6" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                 </div>
-                <div class="product-brand">Sony</div>
-                <div class="product-name">WH-1000XM5</div>
-                <div class="product-description">Auriculares inalámbricos con cancelación de ruido líder en la industria y 30 horas de batería.</div>
-                <div class="product-price">$399.99</div>
+                <div class="product-brand">Canon</div>
+                <div class="product-name">EOS R6 Mark II</div>
+                <div class="product-description">Cámara mirrorless full frame de 24.2MP con estabilización de 8 pasos y video 4K 60fps.</div>
+                <div class="product-price">$2,499.00</div>
                 <div class="product-actions">
                     <a href="/products/3" class="btn-view">Ver Detalles</a>
                     <a href="/products/3/edit" class="btn-edit">Editar</a>
                 </div>
             </div>
 
-            <!-- Producto ejemplo 4 -->
+            <!-- Producto 4 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=300&fit=crop" alt="Dell Monitor UltraSharp 27" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=300&fit=crop" alt="Adidas Ultraboost" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                 </div>
-                <div class="product-brand">Dell</div>
-                <div class="product-name">Monitor UltraSharp 27"</div>
-                <div class="product-description">Monitor 4K IPS con precisión de color profesional, ideal para diseño gráfico y edición de video.</div>
-                <div class="product-price">$599.99</div>
+                <div class="product-brand">Adidas</div>
+                <div class="product-name">Ultraboost 23</div>
+                <div class="product-description">Zapatillas de running con tecnología Boost, parte superior Primeknit y máximo retorno de energía.</div>
+                <div class="product-price">$199.99</div>
                 <div class="product-actions">
                     <a href="/products/4" class="btn-view">Ver Detalles</a>
                     <a href="/products/4/edit" class="btn-edit">Editar</a>
                 </div>
             </div>
 
-            <!-- Producto ejemplo 5 -->
+            <!-- Producto 5 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop" alt="Logitech MX Master 3S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop" alt="Ray-Ban Aviator" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                 </div>
-                <div class="product-brand">Logitech</div>
-                <div class="product-name">MX Master 3S</div>
-                <div class="product-description">Mouse ergonómico para productividad con scroll electromagnético y conectividad multi-dispositivo.</div>
-                <div class="product-price">$99.99</div>
+                <div class="product-brand">Ray-Ban</div>
+                <div class="product-name">Aviator Classic</div>
+                <div class="product-description">Gafas de sol icónicas con lentes polarizadas, montura de metal y protección UV400.</div>
+                <div class="product-price">$159.99</div>
                 <div class="product-actions">
                     <a href="/products/5" class="btn-view">Ver Detalles</a>
                     <a href="/products/5/edit" class="btn-edit">Editar</a>
                 </div>
             </div>
 
-            <!-- Producto ejemplo 6 -->
+            <!-- Producto 6 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=400&h=300&fit=crop" alt="Nintendo Switch OLED" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop" alt="Seiko 5 Sports" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                 </div>
-                <div class="product-brand">Nintendo</div>
-                <div class="product-name">Switch OLED</div>
-                <div class="product-description">Consola híbrida con pantalla OLED de 7", audio mejorado y 64GB de almacenamiento interno.</div>
-                <div class="product-price">$349.99</div>
+                <div class="product-brand">Seiko</div>
+                <div class="product-name">5 Sports Automatic</div>
+                <div class="product-description">Reloj automático con movimiento mecánico, resistencia al agua 100m y cristal Hardlex.</div>
+                <div class="product-price">$295.00</div>
                 <div class="product-actions">
                     <a href="/products/6" class="btn-view">Ver Detalles</a>
                     <a href="/products/6/edit" class="btn-edit">Editar</a>
                 </div>
             </div>
 
-            <!-- Producto ejemplo 7 -->
+            <!-- Producto 7 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://root-nation.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2023/03/razer-deathadder-v3-pro-08.jpg.webp" alt="Razer DeathAdder V3 Pro" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop" alt="The North Face Borealis" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                 </div>
-                <div class="product-brand">Razer</div>
-                <div class="product-name">DeathAdder V3 Pro</div>
-                <div class="product-description">Mouse gaming inalámbrico con sensor Focus Pro 30K y switches ópticos de 90M clicks.</div>
-                <div class="product-price">$149.99</div>
+                <div class="product-brand">The North Face</div>
+                <div class="product-name">Borealis Backpack</div>
+                <div class="product-description">Mochila versátil de 28L con compartimento para laptop, espalda acolchada FlexVent y bolsillos organizadores.</div>
+                <div class="product-price">$99.00</div>
                 <div class="product-actions">
                     <a href="/products/7" class="btn-view">Ver Detalles</a>
                     <a href="/products/7/edit" class="btn-edit">Editar</a>
                 </div>
             </div>
 
-            <!-- Producto ejemplo 8 -->
+            <!-- Producto 8 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=300&fit=crop" alt="ASUS ROG Strix RTX 4080" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <img src="https://images.unsplash.com/photo-1585399000684-d2f72660f092?w=400&h=300&fit=crop" alt="Hydroflask" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                 </div>
-                <div class="product-brand">ASUS</div>
-                <div class="product-name">ROG Strix RTX 4080</div>
-                <div class="product-description">Tarjeta gráfica de alto rendimiento para gaming 4K y creación de contenido con 16GB GDDR6X.</div>
-                <div class="product-price">$1,199.99</div>
+                <div class="product-brand">Hydro Flask</div>
+                <div class="product-name">Wide Mouth 32oz</div>
+                <div class="product-description">Botella de acero inoxidable con aislamiento al vacío TempShield, mantiene bebidas frías 24h o calientes 12h.</div>
+                <div class="product-price">$44.95</div>
                 <div class="product-actions">
                     <a href="/products/8" class="btn-view">Ver Detalles</a>
                     <a href="/products/8/edit" class="btn-edit">Editar</a>
